@@ -169,7 +169,7 @@ const Restaurant1989 = () => {
 
   const sendWhatsAppOrder = () => {
     // Replace with your restaurant's WhatsApp number (with country code, no + or spaces)
-    const phoneNumber = "9647XXXXXXXXX"; // Example: 9647801234567 for Iraq
+    const phoneNumber = "9647733728327"; // Example: 9647801234567 for Iraq
     
     let message = "طلب جديد من موقع 1989:%0A%0A";
     
