@@ -1,5 +1,25 @@
-import React, { useState } from 'react';
-import { MapPin, ShoppingCart, X } from 'lucide-react';
+// Use React and ReactDOM from global scope (loaded via CDN in index.html)
+const { useState } = React;
+
+// Simple SVG icons to replace lucide-react (which requires module bundler)
+const MapPinIcon = ({ className, strokeWidth = 2 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={strokeWidth}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
+
+const ShoppingCartIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+  </svg>
+);
+
+const XIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
 
 const Restaurant1989 = () => {
   const [activeCategory, setActiveCategory] = useState('ريوكات');
@@ -203,7 +223,7 @@ const Restaurant1989 = () => {
           onClick={() => setShowCart(true)}
           className="fixed bottom-8 right-8 bg-black text-white p-4 rounded-full shadow-lg z-50 hover:bg-stone-800 transition-all"
         >
-          <ShoppingCart className="w-6 h-6" />
+          <ShoppingCartIcon className="w-6 h-6" />
           {cart.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-white text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold">
               {cart.reduce((sum, item) => sum + item.quantity, 0)}
@@ -281,7 +301,7 @@ const Restaurant1989 = () => {
           
           <div className="bg-stone-100 p-12 text-center border border-stone-200">
             <div className="flex justify-center mb-6">
-              <MapPin className="w-12 h-12 text-stone-800" strokeWidth={1} />
+              <MapPinIcon className="w-12 h-12 text-stone-800" strokeWidth={1} />
             </div>
             <p className="text-xl md:text-2xl font-light mb-2 tracking-wide">
               بغداد، العراق
@@ -303,7 +323,7 @@ const Restaurant1989 = () => {
             <div className="sticky top-0 bg-white border-b border-stone-200 p-6 flex justify-between items-center">
               <h3 className="text-3xl font-light">سلة الطلبات</h3>
               <button onClick={() => setShowCart(false)} className="hover:bg-stone-100 p-2 rounded">
-                <X className="w-6 h-6" />
+                <XIcon className="w-6 h-6" />
               </button>
             </div>
             
@@ -338,7 +358,7 @@ const Restaurant1989 = () => {
                         onClick={() => removeFromCart(item.name)}
                         className="text-red-600 hover:text-red-800"
                       >
-                        <X className="w-5 h-5" />
+                        <XIcon className="w-5 h-5" />
                       </button>
                     </div>
                   ))}
@@ -392,4 +412,6 @@ const Restaurant1989 = () => {
   );
 };
 
-export default Restaurant1989;
+// Render the app to the DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Restaurant1989));
