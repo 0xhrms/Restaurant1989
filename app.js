@@ -7,7 +7,7 @@ const Restaurant1989 = () => {
   const [showCart, setShowCart] = useState(false);
 
   // Replace these placeholder URLs with your actual image URLs
-  const LOGO_URL = "https://via.placeholder.com/200x200/000000/FFFFFF?text=1989";
+  const LOGO_URL = "https://i.ibb.co/q37BvwxY/1989-logo.jpg";
   
   const menuData = {
     'ريوكات': [
